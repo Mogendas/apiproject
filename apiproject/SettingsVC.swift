@@ -17,11 +17,13 @@ class SettingsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     let userSettings = UserDefaults()
     
     var pickerArray: [Int] = [Int]()
+    var selectedRow: Int = 0
     
     @IBOutlet weak var settingsPickerView: UIPickerView!
     @IBOutlet weak var lblSearchResult: UILabel!
     @IBOutlet weak var lblSearchRadius: UILabel!
     @IBOutlet weak var lblMoveRadius: UILabel!
+    @IBOutlet weak var pickerLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,25 +64,55 @@ class SettingsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 //    }
     @IBAction func searchResultTapped(_ sender: UITapGestureRecognizer) {
 //        print("1")
+        
         pickerArray = searchResults
+        if let results = Int(userSettings.string(forKey: "SearchResult")!) {
+//            lblSearchResult.text = "\(results) st"
+            if let row = pickerArray.index(of: results) {
+//                settingsPickerView.selectRow(row, inComponent: 0, animated: true)
+                selectedRow = row
+//                print("Row: \(row)")
+            }
+//            print("Result: \(results)")
+        }
+        pickerLabel.text = "Välj antal sökresultat"
         showPickerView()
     }
     @IBAction func viewTap(_ sender: UITapGestureRecognizer) {
         settingsPickerView.isHidden = true
+        pickerLabel.isHidden = true
     }
     @IBAction func searchRadiusTapped(_ sender: UITapGestureRecognizer) {
 //        print("2")
         pickerArray = searchRadius
+        if let radius = Int(userSettings.string(forKey: "SearchRadius")!) {
+            if let row = pickerArray.index(of: radius) {
+//                settingsPickerView.selectRow(row, inComponent: 0, animated: true)
+                selectedRow = row
+//                print("Row: \(row)")
+            }
+        }
+        pickerLabel.text = "Välj sökradie"
         showPickerView()
     }
     @IBAction func moveRadiusTapped(_ sender: UITapGestureRecognizer) {
 //        print("3")
         pickerArray = moveRadius
+        if let radiusMove = Int(userSettings.string(forKey: "MoveRadius")!) {
+            if let row = pickerArray.index(of: radiusMove) {
+//                settingsPickerView.selectRow(row, inComponent: 0, animated: true)
+                selectedRow = row
+//                print("Row: \(row)")
+            }
+        }
+        pickerLabel.text = "Välj uppdateringsradie"
         showPickerView()
     }
     
     func showPickerView(){
         settingsPickerView.reloadAllComponents()
+        settingsPickerView.selectRow(selectedRow, inComponent: 0, animated: true)
+        pickerLabel.isHidden = false
         settingsPickerView.isHidden = false
     }
     

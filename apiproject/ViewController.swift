@@ -130,7 +130,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ApiConnectorD
     }
     
     func downloadError(error: String){
-        let message = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        let message = UIAlertController(title: "Fel", message: error, preferredStyle: .alert)
         message.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(message, animated: true, completion: nil)
     }
@@ -222,7 +222,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ApiConnectorD
                 
                 let btnDistance = UIButton(type: .system)
 //                btnDistance.titleLabel?.text = "\(station.distance!)m"
-                btnDistance.titleLabel?.font = UIFont(name: (btnDistance.titleLabel?.font.fontName)!, size: ((btnDistance.titleLabel?.font.pointSize)! - 5))
+                btnDistance.titleLabel?.font = UIFont(name: (btnDistance.titleLabel?.font.fontName)!, size: ((btnDistance.titleLabel?.font.pointSize)! - 4))
 //                btnDistance.backgroundColor = UIColor.black
                 btnDistance.setTitle("\(station.distance!)m", for: .normal)
                 btnDistance.sizeToFit()
