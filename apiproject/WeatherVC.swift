@@ -26,7 +26,7 @@ class WeatherVC: UIViewController {
         
         
         if let location = weatherData!["location"] as? String, let description = weatherData?["description"] as? String, let temp = weatherData?["temp"] as? String, let wind = weatherData?["windDeg"] as? String, let windSpeed = weatherData?["windSpeed"] as? String, let icon = weatherData?["icon"] as? String {
-//            print(wind)
+
             switch icon {
             case "01d":
                 weatherImage.image = #imageLiteral(resourceName: "01d")
@@ -82,18 +82,17 @@ class WeatherVC: UIViewController {
             
             weatherLocation.text = "\(location)"
             weatherDescription.text = "\(description.capitalized)"
-            weatherTemperature.text = "\(temp)º"
+            weatherTemperature.text = "\(temp)ºc"
             
-//            print("Wind: \(wind)")
             let degrees = Double(wind)
-//            print("Degrees: \(degrees)")
+
             let radians: CGFloat = CGFloat(degrees! * Double.pi/180)
             windArrow.transform = windArrow.transform.rotated(by: radians)
             weatherWindSpeed.text = "\(windSpeed) m/s"
         }
         
         
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -102,14 +101,6 @@ class WeatherVC: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

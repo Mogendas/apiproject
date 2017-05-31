@@ -214,16 +214,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ApiConnectorD
                 
                 let btn = UIButton(type: .detailDisclosure)
                 annotationView.rightCalloutAccessoryView = btn
-
-//                let lblDistance = UILabel()
-//                lblDistance.text = "\(station.distance!)m"
-//                lblDistance.font = UIFont(name: lblDistance.font.fontName, size: (lblDistance.font.pointSize - 7))
-//                lblDistance.sizeToFit()
                 
                 let btnDistance = UIButton(type: .system)
-//                btnDistance.titleLabel?.text = "\(station.distance!)m"
                 btnDistance.titleLabel?.font = UIFont(name: (btnDistance.titleLabel?.font.fontName)!, size: ((btnDistance.titleLabel?.font.pointSize)! - 4))
-//                btnDistance.backgroundColor = UIColor.black
                 btnDistance.setTitle("\(station.distance!)m", for: .normal)
                 btnDistance.sizeToFit()
                 

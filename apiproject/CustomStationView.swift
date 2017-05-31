@@ -13,7 +13,4 @@ class CustomStationView: UIView {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var info: UIButton!
     
-    
-
-    
 }
