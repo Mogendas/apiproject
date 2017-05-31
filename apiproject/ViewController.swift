@@ -117,7 +117,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ApiConnectorD
         self.stations = stations
         stationsTableView.reloadData()
         updatePins()
-//        print(stations)
     }
     
     func updateDownloadTime(time: String){
@@ -186,7 +185,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, ApiConnectorD
             centerAtUserLocation(location: userLocation.location!)
         } else {
             distance = (userLocation.location?.distance(from: lastLocationUpdate!))!
-            //            print("Distance: \(distance)")
             if distance > distanceToTravelBeforeUpdating {
                 lastLocationUpdate = userLocation.location
                 getStations(location: userLocation.location!)
